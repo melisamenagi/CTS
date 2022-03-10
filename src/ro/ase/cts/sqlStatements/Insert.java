@@ -1,12 +1,12 @@
 package ro.ase.cts.sqlStatements;
 
-import ro.ase.cts.contracts.Statement;
+import ro.ase.cts.contracts.StatementSQL;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Insert implements Statement {
+public class Insert implements StatementSQL {
 
     @Override
     public void executeStatement(Connection connection) {

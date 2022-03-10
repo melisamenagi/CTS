@@ -1,12 +1,12 @@
 package ro.ase.cts.sqlStatements;
 
-import ro.ase.cts.contracts.Statement;
+import ro.ase.cts.contracts.StatementSQL;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Select implements Statement {
+public class Select implements StatementSQL {
     @Override
     public void executeStatement(Connection connection) {
         String sqlSelect = "SELECT * FROM employees";

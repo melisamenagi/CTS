@@ -1,23 +1,23 @@
 package ro.ase.cts.orchestrators;
 
-import ro.ase.cts.contracts.Statement;
+import ro.ase.cts.contracts.StatementSQL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Orchestrator {
-    Statement statement;
-    private final Statement createStatement;
-    private final Statement insertStatement;
-    private final Statement selectStatement;
+    StatementSQL statementSQL;
+    private final StatementSQL createStatementSQL;
+    private final StatementSQL insertStatementSQL;
+    private final StatementSQL selectStatementSQL;
     Connection connection;
 
-    public Orchestrator(Statement createStatement, Statement insertStatement, Statement selectStatement){
+    public Orchestrator(StatementSQL createStatementSQL, StatementSQL insertStatementSQL, StatementSQL selectStatementSQL){
 //        this.statement = statement;
-        this.createStatement = createStatement;
-        this.insertStatement = insertStatement;
-        this.selectStatement = selectStatement;
+        this.createStatementSQL = createStatementSQL;
+        this.insertStatementSQL = insertStatementSQL;
+        this.selectStatementSQL = selectStatementSQL;
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -28,8 +28,8 @@ public class Orchestrator {
     }
 
     public void execute() {
-        createStatement.executeStatement(connection);
-        insertStatement.executeStatement(connection);
-        selectStatement.executeStatement(connection);
+        createStatementSQL.executeStatement(connection);
+        insertStatementSQL.executeStatement(connection);
+        selectStatementSQL.executeStatement(connection);
     }
 }
